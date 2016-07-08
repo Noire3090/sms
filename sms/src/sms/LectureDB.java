@@ -2,6 +2,6 @@ package sms;
 
 public class LectureDB {
 	private LectureDB(){
-		//abcdえ
+		//準備中
 	}
 }
