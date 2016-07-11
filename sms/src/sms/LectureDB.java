@@ -1,7 +1,12 @@
 package sms;
+
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 public class LectureDB {
-	private LectureDB(){
-		//準備中
-	}
+	//static ArrayList<> ;
+	static Connection connect = null;
+	static PreparedStatement ps = null;
+	static ResultSet result = null;
 }
