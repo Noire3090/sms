@@ -59,10 +59,10 @@ public class Testingclass {
 	}
 	private static void errorCode() {
 		System.out.println("入力エラー");
-		
+
 	}
 	private static void secureCode() {
 		System.out.println("入力成功");
 	}
-	
+
 }
