@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LectureDB {
-	static ArrayList<smsConstructor> constructor;
+	static ArrayList<SmsConstructor> constructor;
 	private static String userName, lectureName, classroom;
 	private static int lecturept;
 	static Connection connect = null;

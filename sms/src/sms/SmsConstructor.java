@@ -1,10 +1,10 @@
 package sms;
 
-public class smsConstructor {
+public class SmsConstructor {
 	String userName, lectureName, classroom;
 	int lecturept;
-	public smsConstructor(){}
-	public smsConstructor(String userName, String lectureName,
+	public SmsConstructor(){}
+	public SmsConstructor(String userName, String lectureName,
 			 int lecturept, String classroom){
 		this.userName = userName;
 		this.lectureName = lectureName;
