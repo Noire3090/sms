@@ -54,7 +54,7 @@ public class Testingclass {
 			System.out.println(eos);
 			System.exit(0);
 		}
-		eos = LectureDB.lecture(username, lecturename, lecturept, classroom);
+		eos = DBmanage.lecture(username, lecturename, lecturept, classroom);
 		System.out.println(eos);
 	}
 	private static void errorCode() {

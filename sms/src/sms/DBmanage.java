@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class LectureDB {
+public class DBmanage {
 	static ArrayList<SmsConstructor> constructor;
 	private static String userName, lectureName, classroom;
 	private static int lecturept;
@@ -36,5 +36,28 @@ public class LectureDB {
 			eos = "Success";
 		}
 		return eos;
+	}
+	public static ArrayList<SmsConstructor> userDB(String user, String pass){
+		String eos = null;
+		SmsConstructor con = null;
+		ArrayList<SmsConstructor> userData = new ArrayList<SmsConstructor>();
+		connect = DBConnection.connectDatabase();
+		try{
+			ps = connect.prepareStatement("select user from userDB where"
+											+" password = ? AND user = ?");
+			ps.setString(1, pass);
+			ps.setString(2, user);
+			result = ps.executeQuery();
+			while(result.next()){
+				con = new SmsConstructor(result.getString("user"));
+				userData.add(con);
+			}
+		}catch(SQLException e){
+			System.out.println("errorcode:"+e.getErrorCode());
+			System.out.println("SQLStats:"+e.getSQLState());
+			e.printStackTrace();
+			eos = "Error occurred";
+		}
+		return userData;
 	}
 }
