@@ -37,29 +37,6 @@ public class DBmanage {
 		}
 		return eos;
 	}
-	public static ArrayList<SmsConstructor> userDB(String user, String pass){
-		String eos = null;
-		SmsConstructor con = null;
-		ArrayList<SmsConstructor> userData = new ArrayList<SmsConstructor>();
-		connect = DBConnection.connectDatabase();
-		try{
-			ps = connect.prepareStatement("select user from userDB where"
-											+" password = ? AND user = ?");
-			ps.setString(1, pass);
-			ps.setString(2, user);
-			result = ps.executeQuery();
-			while(result.next()){
-				con = new SmsConstructor(result.getString("user"));
-				userData.add(con);
-			}
-		}catch(SQLException e){
-			System.out.println("errorcode:"+e.getErrorCode());
-			System.out.println("SQLStats:"+e.getSQLState());
-			e.printStackTrace();
-			eos = "Error occurred";
-		}
-		return userData;
-	}
 	public static String usersInsert(String username, String password) {
 		String eos = null;
 		connect = DBConnection.connectDatabase();
@@ -78,5 +55,19 @@ public class DBmanage {
 			eos = "OK";
 		}
 		return eos;
+	}
+	public static ResultSet loginA(String username, String password) {
+		connect = DBConnection.connectDatabase();
+		try{
+			ps = connect.prepareStatement("select * from users where name = ? and password = sha1(?)");
+			ps.setString(1, username);
+			ps.setString(2, password);
+			result = ps.executeQuery();
+		}catch(SQLException e){
+			System.out.println("errorcode:"+e.getErrorCode());
+			System.out.println("SQLStats:"+e.getSQLState());
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

@@ -4,11 +4,28 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>loginPage</title>
 </head>
 <body>
-<form action="./sessionandlogin" method="post">
+<form action="./Sessionandlogin" method="post" name="loginpage">
 	<h1>ログインページ</h1>
+	<%
+		String code = null;
+		code = (String)session.getAttribute("status");
+		if(code == "error"){
+			out.println("<p><span style=\"color:#FF0000\">ユーザー名または、パスワードが間違っています。</span></p>");
+			out.println("<p><span style=\"color:#FF0000\">ユーザー名、パスワードを確認してもう一度入力してください</span></p>");
+		}else if(code == "notfounderror"){
+			out.println("<p><span style=\"color:#FF0000\">ユーザー名または、パスワードが入力されていません。</span></p>");
+			out.println("<p><span style=\"color:#FF0000\">ユーザー名、パスワードを入力してください</span></p>");
+		}else if(code == "p-error"){
+			out.println("<p><span style=\"color:#FF0000\">パスワードが間違っています。</span></p>");
+			out.println("<p><span style=\"color:#FF0000\">パスワードを確認してもう一度入力してください</span></p>");
+		}else if(code == "u-error"){
+			out.println("<p><span style=\"color:#FF0000\">ユーザー名が間違っています。</span></p>");
+			out.println("<p><span style=\"color:#FF0000\">ユーザー名を確認してもう一度入力してください</span></p>");
+		}
+	%>
 	<table>
 	<tr>
 	<td>
@@ -27,7 +44,7 @@
 	</td>
 	</tr>
 	</table>
-	<input type="submit" value="ログイン">
+	<input type="submit" value="ログイン" id="submit">
 </form>
 </body>
 </html>
