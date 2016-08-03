@@ -1,7 +1,9 @@
 package sms;
 
 public class SmsConstructor {
-	String user, lectureName, classroom;
+	static String user;
+	String lectureName;
+	String classroom;
 	int lecturept;
 	public SmsConstructor(){}
 	public SmsConstructor(String user, String lectureName,
@@ -14,7 +16,7 @@ public class SmsConstructor {
 	public SmsConstructor(String user) {
 		this.user = user;
 	}
-	public String getUser(){
+	public static String getUser(){
 		return user;
 	}
 }

@@ -60,4 +60,23 @@ public class DBmanage {
 		}
 		return userData;
 	}
+	public static String usersInsert(String username, String password) {
+		String eos = null;
+		connect = DBConnection.connectDatabase();
+		try{
+				ps = connect.prepareStatement("insert into users values (0, ?, SHA1(?))");
+				ps.setString(1, username);
+				ps.setString(2, password);
+				ps.executeUpdate();
+		}catch(SQLException e){
+			System.out.println("errorcode:"+e.getErrorCode());
+			System.out.println("SQLStats:"+e.getSQLState());
+			e.printStackTrace();
+			eos = "Error occurred";
+		}
+		if(eos == null){
+			eos = "OK";
+		}
+		return eos;
+	}
 }
